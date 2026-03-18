@@ -10,20 +10,20 @@ const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://srd118050_db_user:iaQ7
 async function startServer() {
   try {
     await mongoose.connect(MONGO_URI);
-    console.log("✅  MongoDB connected successfully");
+    console.log("MongoDB connected successfully");
 
     app.listen(PORT, () => {
-      console.log(`🚀  Server running at http://localhost:${PORT}`);
-      console.log(`📄  API docs: http://localhost:${PORT}/posts`);
+      console.log(`Server running at http://localhost:${PORT}`);
+      console.log(`API docs: http://localhost:${PORT}/posts`);
     });
   } catch (error) {
-    console.error("❌  Failed to connect to MongoDB:", error);
+    console.error("Failed to connect to MongoDB:", error);
     process.exit(1);
   }
 }
 
 mongoose.connection.on("disconnected", () => {
-  console.warn("⚠️  MongoDB disconnected");
+  console.warn("MongoDB disconnected");
 });
 
 startServer();
